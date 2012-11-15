@@ -416,6 +416,10 @@ namespace RestSharp
 #if !SILVERLIGHT
 			webRequest.AllowAutoRedirect = FollowRedirects;
 #endif
+
+			// Fixes occasional crashes--see https://bugzilla.xamarin.com/show_bug.cgi?id=8407#c18
+			webRequest.Proxy =  GlobalProxySelection.GetEmptyWebProxy();
+
 			return webRequest;
 		}
 
