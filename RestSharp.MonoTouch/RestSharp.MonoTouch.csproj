@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOTOUCH;FRAMEWORK</DefineConstants>
+    <DefineConstants>DEBUG;MONOTOUCH;FRAMEWORK;SIMPLE_JSON_OBJARRAYINTERNAL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchDebug>True</MtouchDebug>
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchLink>None</MtouchLink>
-    <DefineConstants>MONOTOUCH;FRAMEWORK</DefineConstants>
+    <DefineConstants>MONOTOUCH;FRAMEWORK;SIMPLE_JSON_OBJARRAYINTERNAL</DefineConstants>
     <MtouchArch>ARMv6</MtouchArch>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -44,7 +44,7 @@
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\iPhone\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOTOUCH;FRAMEWORK</DefineConstants>
+    <DefineConstants>DEBUG;MONOTOUCH;FRAMEWORK;SIMPLE_JSON_OBJARRAYINTERNAL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchDebug>True</MtouchDebug>
@@ -61,7 +61,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <DefineConstants>MONOTOUCH;FRAMEWORK</DefineConstants>
+    <DefineConstants>MONOTOUCH;FRAMEWORK;SIMPLE_JSON_OBJARRAYINTERNAL</DefineConstants>
     <MtouchArch>ARMv6</MtouchArch>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
