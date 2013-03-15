@@ -115,7 +115,11 @@ namespace RestSharp
 		/// Whether or not HTTP 3xx response redirects should be automatically followed
 		/// </summary>
 		public bool FollowRedirects { get; set; }
-#endif
+        /// <summary>
+        /// Default is true. Determine whether to buffer the data sent to the Internet resource.
+        /// </summary>
+        public bool AllowWriteStreamBuffering { get; set; }
+        #endif
 #if FRAMEWORK
 		/// <summary>
 		/// X509CertificateCollection to be sent with request

@@ -58,6 +58,7 @@ namespace RestSharp
 			AddHandler("*", new XmlDeserializer());
 
 			FollowRedirects = true;
+            AllowWriteStreamBuffering = true;
 		}
 
 		/// <summary>
@@ -156,6 +157,12 @@ namespace RestSharp
 		/// HTTP status codes of 3xx should follow returned redirect
 		/// </summary>
 		public bool FollowRedirects { get; set; }
+
+        /// <summary>
+        /// Default is true. Determine whether to buffer the data sent to the Internet resource.
+        /// </summary>
+        /// <value><c>true</c> if allow write stream buffering; otherwise, <c>false</c>.</value>
+        public bool AllowWriteStreamBuffering { get; set; }
 
 		/// <summary>
 		/// The CookieContainer used for requests made by this client instance
@@ -306,6 +313,7 @@ namespace RestSharp
 
 #if !SILVERLIGHT
 			http.FollowRedirects = FollowRedirects;
+            http.AllowWriteStreamBuffering = AllowWriteStreamBuffering;
 #endif
 #if FRAMEWORK
 			if (ClientCertificates != null)

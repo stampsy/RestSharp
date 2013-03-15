@@ -415,6 +415,7 @@ namespace RestSharp
 
 #if !SILVERLIGHT
 			webRequest.AllowAutoRedirect = FollowRedirects;
+            webRequest.AllowWriteStreamBuffering = AllowWriteStreamBuffering;
 #endif
 
 			// Fixes occasional crashes--see https://bugzilla.xamarin.com/show_bug.cgi?id=8407#c18

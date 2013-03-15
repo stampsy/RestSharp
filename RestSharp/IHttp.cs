@@ -30,6 +30,7 @@ namespace RestSharp
 		int Timeout { get; set; }
 #if !SILVERLIGHT
 		bool FollowRedirects { get; set; }
+        bool AllowWriteStreamBuffering { get; set; }
 #endif
 #if FRAMEWORK
 		X509CertificateCollection ClientCertificates { get; set; }
