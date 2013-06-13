@@ -22,7 +22,6 @@ Thumbs.db
 *.ilk
 *.log
 ClientBin
-[Bb]in
 [Dd]ebug*/
 *.lib
 *.sbr
