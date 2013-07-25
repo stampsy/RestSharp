@@ -11,11 +11,6 @@ namespace RestSharp
 	public partial class RestClient
 	{
 
-		/// <summary>
-		/// Proxy to use for requests made by this client instance.
-		/// Passed on to underying WebRequest if set.
-		/// </summary>
-		public IWebProxy Proxy { get; set; }
 
 		/// <summary>
 		/// Executes the specified request and downloads the response data
@@ -62,17 +57,12 @@ namespace RestSharp
 		{
 			AuthenticateIfNeeded(this, request);
 
-			// add Accept header based on registered deserializers
-			var accepts = string.Join(", ", AcceptTypes.ToArray());
-			this.AddDefaultParameter("Accept", accepts, ParameterType.HttpHeader);
-
 			IRestResponse response = new RestResponse();
 			try
 			{
 				var http = HttpFactory.Create();
 
 				ConfigureHttp(request, http);
-				ConfigureProxy(http);
 
 				response = ConvertToRestResponse(request, getResponse(http, httpMethod));
 				response.Request = request;
@@ -88,7 +78,6 @@ namespace RestSharp
 
 			return response;
 		}
-
 
 		private static HttpResponse DoExecuteAsGet(IHttp http, string method)
 		{
@@ -119,14 +108,6 @@ namespace RestSharp
 		public IRestResponse<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod) where T : new()
 		{
 			return Deserialize<T>(request, ExecuteAsPost(request, httpMethod));
-		}
-
-		private void ConfigureProxy(IHttp http)
-		{
-			if (Proxy != null)
-			{
-				http.Proxy = Proxy;
-			}
 		}
 	}
 }

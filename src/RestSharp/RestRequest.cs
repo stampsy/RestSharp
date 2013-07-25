@@ -42,6 +42,11 @@ namespace RestSharp
 		public ISerializer XmlSerializer { get; set; }
 
 		/// <summary>
+		/// Set this to write response to Stream rather than reading into memory.
+		/// </summary>
+		public Action<Stream> ResponseWriter { get; set; }
+
+		/// <summary>
 		/// Default constructor
 		/// </summary>
 		public RestRequest()
@@ -116,10 +121,13 @@ namespace RestSharp
 		/// <returns>This request</returns>
 		public IRestRequest AddFile (string name, string path)
 		{
+			FileInfo f = new FileInfo (path);
+			long fileLength = f.Length;
 			return AddFile(new FileParameter
 			{
 				Name = name,
 				FileName = Path.GetFileName(path),
+				ContentLength = fileLength,
 				Writer = s =>
 				{
 					using(var file = new StreamReader(path))
@@ -260,7 +268,16 @@ namespace RestSharp
 					{
 						if (propType.IsArray)
 						{
-							val = string.Join(",", (string[])val);
+							var elementType = propType.GetElementType();
+
+							if (((Array)val).Length > 0 && (elementType.IsPrimitive || elementType.IsValueType || elementType == typeof(string))) {
+								// convert the array to an array of strings
+								var values = (from object item in ((Array)val) select item.ToString()).ToArray<string>();
+								val = string.Join(",", values);
+							} else {
+								// try to cast it
+								val = string.Join(",", (string[])val);
+							}
 						}
 
 						AddParameter(prop.Name, val);
